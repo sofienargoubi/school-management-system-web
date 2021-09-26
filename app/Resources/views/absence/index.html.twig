@@ -1,0 +1,62 @@
+{% extends 'interfacePersonnel.html.twig' %}
+{% block body %}
+<div class="container">
+    <h1>Absences list</h1>
+    <input  class="form-control"  aria-label="Search" type="text" placeholder="Search" name="search" id="re" onkeyup="searchh()" style="border-color:#003f81;width: 250px;">
+    <br>
+    <div id="det22">
+    <table class="table">
+        <thead >
+            <tr>
+
+                <th>Date</th>
+                <th>Timedeb</th>
+                <th>Timefin</th>
+                <th>Subject</th>
+                <th>User</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for absence in absences %}
+            <tr>
+
+                <td>{% if absence.date %}{{ absence.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if absence.timedeb %}{{ absence.timedeb|date('H:i:s') }}{% endif %}</td>
+                <td>{% if absence.timefin %}{{ absence.timefin|date('H:i:s') }}{% endif %}</td>
+                <td>{{ absence.idMatiere.nom }}</td>
+                <td>{{ absence.idUser.nomuser }}</td>
+                <td>
+                    <a href="{{ path('absence_edit', { 'id': absence.id }) }}"><i class="fa fa-edit"></i></a>
+                </td>
+                <td><a href="{{ path('absence_deleteC', { 'id': absence.id }) }}"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+    <ul>
+        <li>
+            <a href="{{ path('absence_new') }}">Create a new absence</a>
+        </li>
+    </ul>
+</div>
+
+
+
+    <script>
+        function searchh() {
+            var sch=$("#re").val();
+            $.ajax({
+                url: "{{ path('clhh') }}",
+                data:{dat: sch},
+                type: "POST",
+                success: function(data){
+                    $('#det22').html(data).show();
+                }
+            });
+        }
+    </script>
+{% endblock %}

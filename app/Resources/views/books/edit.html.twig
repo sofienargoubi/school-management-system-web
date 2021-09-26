@@ -1,0 +1,46 @@
+{% extends 'interfacePersonnel.html.twig' %}
+
+{% block body %}
+    <h1>Book edit</h1>
+    {{ form_start(edit_form,{'attr': {'novalidate': 'novalidate'}}) }}
+    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+        <div class="card">
+
+         <!--   <div class="alert alert-success" role="alert">
+                This is a success alert—check it out!
+            </div>-->
+            <h5 class="card-header">Update Book</h5>
+            <div class="card-body">
+                <form action="#" id="basicform" data-parsley-validate="">
+                    <div class="form-group">
+                        {{ form_label(edit_form.titrebook,'Name :') }}
+                        {{ form_widget(edit_form.titrebook,{'attr': {'class':'form-control'}}) }}
+
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(edit_form.descriptionbook,'Description :') }}
+                        {{ form_widget(edit_form.descriptionbook,{'attr': {'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(edit_form.etatbook,'Status :') }}
+                        {{ form_widget(edit_form.etatbook,{'attr': {'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(edit_form.categoriebook,'Categorie :') }}
+                        {{ form_widget(edit_form.categoriebook,{'attr': {'class':'form-control'}}) }}
+                    </div>
+                      <div class="form-group">
+
+                      {{ form_widget(edit_form)}}
+
+                        {{ form_end(edit_form) }}
+                        {{ form_start(delete_form) }}
+                        <button type="submit" value="Delete" class="btn btn-space btn-secondary">Delete</button>
+                        {{ form_end(delete_form) }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
