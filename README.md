@@ -39,6 +39,7 @@ software can get the job done with perfection and that too fully online.
 - Clone the Master branch
 - launch your server (xampp or wampserver ) and import BD file .
 - Open the main directory "cd school-management-system-web"
+- Run "composer update"
 - Run "php bin/console server:run"
 - Go to http:/localhost:8000/ and Enjoy ;)
 
